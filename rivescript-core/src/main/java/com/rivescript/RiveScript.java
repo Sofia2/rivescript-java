@@ -286,6 +286,32 @@ public class RiveScript {
 		// The coder has already broken the lines for us!
 		return parse("(streamed)", code);
 	}
+	
+	
+	/**
+	 * Streams some RiveScript code directly into the interpreter.
+	 *
+	 * @param code The string containing all the RiveScript code.
+	 * @param scriptName Name of the RiveScript document.
+	 */
+	public boolean streamScript (String code, String scriptName) {
+		say("Load script: " + scriptName);
+
+		// Run some sanity checks on the file handle.
+		if (code == null) {
+			return error(scriptName + ": script null.");
+		}
+		if (code.equals("")) {
+			return error(scriptName + ": script empty.");
+		}
+
+		// Split the given code up into lines.
+		String[] lines = code.split("\n");
+
+		// Send the lines to the parser.
+		return parse(scriptName, lines);
+	}
+
 
 	/*---------------------------*/
 	/*-- Configuration Methods --*/
