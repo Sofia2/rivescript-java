@@ -1990,7 +1990,7 @@ public class RiveScript {
 		message = Util.substitute(subs_s, subs, message);
 
 		// Sanitize what's left.
-		message = message.replaceAll("[^a-z0-9_ ]", "");
+		message = message.replaceAll("[^a-zñ0-9_ ]", "");
 		return message;
 	}
 
